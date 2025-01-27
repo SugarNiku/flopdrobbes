@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=3 uid="uid://b70rop21ci2cw"]
+
+[ext_resource type="Texture2D" uid="uid://dhhf0hok8x4lm" path="res://PNGs/coin_1.png" id="1_2r4vm"]
+[ext_resource type="Texture2D" uid="uid://c64yc8vrhoajf" path="res://PNGs/coin_2.png" id="2_xkxym"]
+[ext_resource type="Texture2D" uid="uid://c0c806b8g10ra" path="res://PNGs/coin_3.png" id="3_wjphe"]
+[ext_resource type="Texture2D" uid="uid://cr8rrw2knp8pf" path="res://PNGs/coin_4.png" id="4_urda0"]
+[ext_resource type="Texture2D" uid="uid://3kyc7i728m08" path="res://PNGs/coin_5.png" id="5_7gfjx"]
+[ext_resource type="Texture2D" uid="uid://b54umiexpuhei" path="res://PNGs/coin_6.png" id="6_biiye"]
+[ext_resource type="Texture2D" uid="uid://c1opy6n56d77a" path="res://PNGs/coin_7.png" id="7_8sryt"]
+[ext_resource type="Texture2D" uid="uid://xaoiwex2v0o" path="res://PNGs/coin_8.png" id="8_mkyx4"]
+
+[sub_resource type="GDScript" id="GDScript_7c4bb"]
+script/source = "extends Area2D
+
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.name == \"Player\":
+		var tween = get_tree().create_tween()
+		var tween1 = get_tree().create_tween()
+		tween.tween_property(self, \"position\", position - Vector2(0, 25), 0.3)
+		tween1.tween_property(self, \"modulate:a\", 0, 0.3)
+		tween.tween_callback(queue_free)
+		body.coin += 10
+		queue_free()
+	
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v63uq"]
+radius = 3.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7b2qq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2r4vm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xkxym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wjphe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_urda0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7gfjx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_biiye")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8sryt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mkyx4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 13.0
+}]
+
+[node name="gold" type="Area2D"]
+script = SubResource("GDScript_7c4bb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_v63uq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-4.76837e-07, -4.76837e-07)
+rotation = 0.0176756
+scale = Vector2(0.300285, 0.256237)
+sprite_frames = SubResource("SpriteFrames_7b2qq")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.754582
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

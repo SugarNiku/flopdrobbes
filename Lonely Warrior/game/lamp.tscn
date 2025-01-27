@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://px3wmgeigs7e"]
+
+[ext_resource type="Texture2D" uid="uid://p4arbhki7gsr" path="res://Oak Wood Sprite/decorations/lamp.png" id="1_gxvwr"]
+[ext_resource type="Texture2D" uid="uid://c6vh5m8y7gh4y" path="res://Asets/circle.png" id="2_fkhcg"]
+
+[node name="lamp" type="Node2D"]
+
+[node name="Lamp" type="Sprite2D" parent="."]
+texture = ExtResource("1_gxvwr")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-5.00001, -5)
+scale = Vector2(0.2225, 0.179068)
+color = Color(0.791191, 0.634529, 0.31433, 1)
+energy = 4.5
+shadow_enabled = true
+texture = ExtResource("2_fkhcg")

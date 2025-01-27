@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw3ilvwsc3e3y"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_id4cc"]
+[ext_resource type="PackedScene" uid="uid://dik1tt0hsbbt" path="res://parallax_fon.tscn" id="2_3rwpk"]
+
+[sub_resource type="Theme" id="Theme_221ql"]
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_id4cc")
+
+[node name="Play" type="Button" parent="."]
+offset_left = 440.0
+offset_top = 181.0
+offset_right = 731.0
+offset_bottom = 302.0
+theme = SubResource("Theme_221ql")
+theme_override_font_sizes/font_size = 50
+text = "Играть"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 441.0
+offset_top = 443.0
+offset_right = 731.0
+offset_bottom = 591.0
+theme = SubResource("Theme_221ql")
+theme_override_font_sizes/font_size = 55
+text = "Выход
+"
+
+[node name="Parallax FON" parent="." instance=ExtResource("2_3rwpk")]
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

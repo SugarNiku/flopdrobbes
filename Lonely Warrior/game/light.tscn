@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://3udl7fsakyer"]
+
+[ext_resource type="Texture2D" uid="uid://c6vh5m8y7gh4y" path="res://Asets/circle.png" id="1_2nvyg"]
+
+[node name="Light" type="Node2D"]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(1.19209e-07, 2.38419e-07)
+scale = Vector2(0.26125, 0.24875)
+color = Color(0.791191, 0.634529, 0.31433, 1)
+energy = 3.0
+shadow_enabled = true
+texture = ExtResource("1_2nvyg")
